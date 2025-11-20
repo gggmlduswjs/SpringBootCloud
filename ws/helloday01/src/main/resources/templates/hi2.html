@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>hi2 뷰</h2>
+
+<h2>음료목록</h2>
+
+<ul>
+
+    <li th:each=" item : ${list}" th:text="${item}">리스트항목</li>
+
+</ul>
+
+<h3>음료목록</h3>
+
+<ul>
+    <th:block th:each="item:${list}">
+        <li th:text="${item}"> 리스트항목</li>
+        <p>^.^</p>
+    </th:block>
+</ul>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Names</title>
+</head>
+<body>
+
+<h2>이름 목록</h2>
+<ul id="nameList"></ul>
+
+<script>
+    // 서버에서 데이터 가져오기
+    fetch('/helloNameData')
+        .then(response => response.json())
+        .then(data => {
+
+            console.log( data);
+            const ul = document.getElementById('nameList');
+
+            // 1초 간격으로 하나씩 추가
+            let index = 0;
+            const interval = setInterval(() => {
+                if(index >= data.length) {
+                    clearInterval(interval);
+                    return;
+                }
+                const li = document.createElement('li');
+                li.textContent = data[index];
+                ul.appendChild(li);
+                index++;
+            }, 1000); // 1초 간격
+        })
+        .catch(err => console.error(err));
+</script>
+
+</body>
+</html>

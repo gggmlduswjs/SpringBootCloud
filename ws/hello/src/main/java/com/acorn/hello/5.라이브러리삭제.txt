@@ -1,0 +1,15 @@
+
+
+   로컬에 받아둔 라이브러리가 문제가 생겼을 때 삭제함..
+   (로컬저장소 삭제하기)
+
+
+File → Invalidate Caches / Restart 클릭
+나오는 창에서
+Invalidate and Restart 선택
+필요하다면 Clear file system cache and Local History 체크 가능
+
+⚠️ 참고: “로컬 저장소(local repository)” 전체를 지우는 건 Maven/Gradle의 .m2/repository 또는 .gradle/caches를 직접 삭제해야 함
+IntelliJ의 Invalidate Caches는 IDE 내부 캐시, 색인, 파일 시스템 캐시를 삭제하는 기능임
+
+IntelliJ가 재시작되면서 캐시가 새로 생성되고, 문제가 해결될 수 있음

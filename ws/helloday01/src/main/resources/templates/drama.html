@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>드라마 정보</title>
+</head>
+<body>
+
+<h1 th:text="${drama.title}">드라마 제목</h1>
+<p th:text="${drama.summary}">요약</p>
+
+<h2>배우 목록</h2>
+<ul>
+    <li th:each="actor : ${drama.actors}" th:text="${actor}">배우명</li>
+</ul>
+
+<h2>방송시간</h2>
+
+<h2 th:text="${drama.time}">방송시간 안내</h2>
+
+
+
+<img  th:src="@{'/imgs/' + ${drama.image}}" alt="cute img">
+
+</body>
+</html>

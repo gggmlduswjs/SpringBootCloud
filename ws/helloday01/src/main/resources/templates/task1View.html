@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>계산기</h2>
+
+<form th:action="@{/calc}" method="post">
+    <input type="text" name="su1"> <br>
+    <input type="text" name="su2"> <br>
+    <button>계산하기</button>
+</form>
+
+<img th:src="@{/imgs/calc.jpg}" alt="계산기이미지">
+</body>
+</html>

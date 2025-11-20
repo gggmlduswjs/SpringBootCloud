@@ -1,0 +1,103 @@
+1차시 수업 
+https://special-rainstorm-825.notion.site/13bc031ede418071a73de18af2f775c5
+
+인텔리제이 다운로드
+자바 17
+제어판 시스템
+setting plugins lombok 설치
+bulid,EXECUTION. ->GRADLE BUILD AND RUN USING
+compler -> rebuild
+->anno 
+HelloSpringApplication 실행 -> 주소창 
+http://localhost:8080/today-cook
+ advance->compliler -> allow 체크
+학습 목표
+1. Spring Initializr를 이용하여 스프링 프로젝트를 생성할 수 있다.
+    - Gradle 기반 프로젝트 생성
+      기본 구조(src/main/java, src/main/resources) 이해
+    - 의존성 추가 및 프로젝트 실행
+
+2. Spring MVC의 View로 타임리프(Thymeleaf)를 사용할 수 있다.
+    - JSP 대신 타임리프 뷰 사용
+    - th:text, th:each 등 기본 문법 이해 ( 두 개 사용만 익히기)
+    - Controller → View 모델 전달
+
+3. Controller의 응답 유형을 구분하여 사용할 수 있다. 
+    - View 응답: HTML 페이지 렌더링 (return "viewName")
+    - 데이터 응답: JSON, 문자열 등 (@ResponseBody, ResponseEntity)
+
+   
+
+(1) 스프링부트 프로젝트 생성
+Spring Initializr 사용 (https://start.spring.io)
+Gradle 선택
+Spring Boot Starter Web 의존성 추가
+프로젝트 구조 확인 (src/main/java, src/main/resources)
+
+(2) 스프링부트 프로젝트 구조 이해
+src/main/java → 코드 작성
+src/main/resources → 설정/템플릿/정적 리소스
+application.properties / application.yml → 기본 설정
+templates/ → Thymeleaf 뷰
+static/ → 정적 리소스(CSS, JS, 이미지)
+
+(3) Controller 작성
+@Controller / @RestController 차이 이해
+View 응답 예제
+
+@Controller
+@GetMapping("/hello")
+public String hello(Model model) {
+    model.addAttribute("message", "Hello Spring Boot!");
+    return "hello"; // templates/hello.html
+}
+
+
+데이터 응답 예제
+@RestController
+@GetMapping("/data")
+public  Acorn   data() {
+    return    new  Acorn("name", "홍길동", "age", "30");
+}
+
+(4) Thymeleaf 뷰 작성
+templates/hello.html 생성
+<p th:text="${message}">Hello</p>
+View에 모델 데이터 출력
+
+(5) 실행 및 테스트
+SpringBootApplication main 실행
+브라우저에서 /hello, /data 확인
+
+(6) Optional: 배너 변경
+src/main/resources/banner.txt 생성 → 실행 시 출력 배너 변경
+
+
+
+
+#################################################
+오후실습 :  서비스제공하는 문제 풀기
+
+
+서비스층 분리하여 문제풀기 
+##################################################  
+1. 두 수를 사용자로 부터 입력 받아 사칙연산해서 제공하기    /calc
+2. 3단 제공하기 (3단 제공하는 서비스)                              /dan3
+3. 원하는단 제공하기 (원하는단을 제공하는 서비스)            /dan?num=3
+4. 학생성적을 처리하기 위한 Score class를 만든것처럼        /movie 
+자신이 처리하고 싶은 자료에 대한 class를 만들고 그 정보를 제공하기 (응답해 주기)
+예) 책정보:Book class  , Music ..등
+5. 원하는 수만큼의 별을 출력하기 ( 원하는 수만큼 별을 출력하는 서비스제공하기)  /star?cnt=5
+6. 수를 사용자로부터 받으면 입력한 수에 대한 약수를 구해서 제공하기    /divisor
+(약수를 구해주는 서비스)
+7. 화이팅메시지 제공하기    /message 
+8. 랜덤한 화이팅메시지 제공하기 /message/random
+9. 귀여운이미지 제공하기    /cute/img
+10. 랜덤한 귀여운이미지 제공하기  /cute/img/random
+11. 원하는 서비스 만들어서 제공하기  
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .box{
+            width:300x;
+            display:flex;
+
+        }
+        .box > div{  flex:1; }
+    </style>
+</head>
+<body>
+ffgfgfdfdfdd0000000000000000000kkk
+
+<div class="box" th:each="m : ${list}">
+     <div th:text="${m.id}"></div>
+    <div th:text="${m.pw}"></div>
+    <div th:text="${m.name}"></div>
+</div>
+
+
+<h1>Map Contents</h1>
+
+<!-- map을 간단하게 출력 -->
+<div th:each="entry : ${map}">
+    <p>Key: <span th:text="${entry.key}"></span>  </p>
+</div>
+
+
+
+</body>
+</html>

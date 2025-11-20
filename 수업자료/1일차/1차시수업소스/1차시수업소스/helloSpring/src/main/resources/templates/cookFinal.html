@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>오늘의 요리사</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fff8e1;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .cook-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff9800;
+        }
+        .cook-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ff5722;
+        }
+        .cook-specialty {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #795548;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>오늘의 요리사 🍳🎉</h1>
+    <!-- 요리사 이미지 -->
+    <img th:src="@{/images/cook.png}" alt="귀여운 요리사" class="cook-image">
+    <!-- 요리사 이름 -->
+    <div class="cook-name" th:text="${cook.name}"></div>
+
+</div>
+</body>
+</html>

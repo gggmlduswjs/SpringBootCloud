@@ -1,0 +1,9 @@
+
+
+
+
+1. 실행 :   HellpApplication   -main   시작
+2. 자바소스 : src/main/java
+3. 뷰(타임리프) :   resources/templates - 아래에 위치함
+4. 정적자원(css, js , images)  :  resources/static -아래와 위치함
+5. 설정파일 :  resources/application.properties

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>귀여운 화이팅 메시지</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #fff8f0;
+            padding: 20px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ffe4e1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: opacity 0.5s;
+            opacity: 0;
+        }
+        li.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<h2>💚 귀여운 화이팅 메시지 💚</h2>
+<ul id="praiseList"></ul>
+
+<script th:inline="javascript">
+    /* 서버에서 보내준 리스트를 JavaScript 배열로 변환 */
+    let messages = /*[[${list}]]*/ [];
+
+    let ul = document.getElementById("praiseList");
+    let index = 0;
+
+    function showNext() {
+        if (index < messages.length) {
+            let li = document.createElement("li");
+            li.textContent = messages[index];
+            ul.appendChild(li);
+
+            /* fade-in 효과 */
+            setTimeout(() => li.classList.add("show"), 50);
+
+            index++;
+            setTimeout(showNext, 1000); // 1초 간격으로 다음 메시지 표시
+        }
+    }
+
+    showNext();
+</script>
+
+</body>
+</html>
