@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a">
+
+<!--   테이블 컬럼과 객체의 속성명 매칭-->
+    <resultMap id="userMap" type="User2">
+        <result property="id" column="m_id"/>
+        <result property="pw" column="m_pw"/>
+        <result property="name" column="m_name"/>
+    </resultMap>
+
+<!--    전체조회-->
+    <select id="SelectAll" resultType="User">
+        select   * from  member_tbl_11
+    </select>
+<!--    회원등록하기-->
+    <insert id="insert" parameterType="User">
+        insert  into  member_tbl_11( m_id, m_pw, m_name)
+        values(#{m_id}, #{m_pw}  , #{m_name})
+    </insert>
+
+
+    <update id="update" parameterType="User">
+        update member_tbl_11
+        set
+        m_pw=#{m_pw}
+        where
+        m_id=#{m_id}
+    </update>
+
+    <delete id="delete" parameterType="String">
+        delete from member_tbl_11
+        where m_id = #{id}
+    </delete>
+
+
+<!--    결과는 전부 null로 나옴, 이유는 컬럼명의 이름과 속성의 이름이 다르기 때문에-->
+    <select id="selectAll2" resultMap="userMap">
+        select * from member_tbl_11
+    </select>
+
+
+
+</mapper>

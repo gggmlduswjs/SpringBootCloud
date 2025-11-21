@@ -1,0 +1,16 @@
+
+mvc - 모델(자바객체)
+
+
+Task1Controller
+Task1Service
+task1View => 타임리프
+
+
+금요일( 조장, 부조장님)  : DM
+12월1일(월)
+12월 2일 ~5일간   기획시간 
+1주일: 배포(aws,  도커기반  , 배포  cicd ) :5일간 
+
+2틀:jpa 
+4:리액트

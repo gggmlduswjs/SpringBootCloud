@@ -1,0 +1,9 @@
+c:\>  netstat   -ano 
+
+
+C:\Users\user>taskkill /pid  14016
+오류: 프로세스(PID 14016)를 종료할 수 없습니다.
+원인: 이 프로세스는 /F 옵션을 사용하여 강제로 종료해야 합니다.
+
+C:\Users\user>taskkill /pid  14016 -f
+성공: 프로세스(PID 14016)가 종료되었습니다.
