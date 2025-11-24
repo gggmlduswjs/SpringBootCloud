@@ -1,0 +1,30 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order List</title>
+</head>
+<body>
+<h1>Order List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Order Name</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <!-- 결과를 DTO가 아닌  Map<String, Object>로 받은 것은  아래와 같이 사용한다  -->
+    <!-- map객체의 값 꺼내기 , 이름은 컬럼명  -->
+    <tr th:each="order : ${list}">
+        <td th:text="${order['ID']}">Order ID</td>
+        <td th:text="${order['NAME']}">Order NAMe</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+
+</body>
+</html>

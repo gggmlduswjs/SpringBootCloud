@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="b">
+<!--  조건 : title, writer, content   검색어 : 다형성 , 변우석, 생성자 -->
+<!--  매개변수가 한 개여야 한다. 객체로 전달 받는다.-->
+    <select id="selectSearchCondition"   resultType="Board"    parameterType="SearchCondition" >
+        select * from boardt
+        <where>
+            <if test="condition != null and  condition !=''">
+                ${condition}  LIKE '%' ||  #{keyword} || '%'
+            </if>
+        </where>
+    </select>
+
+</mapper>

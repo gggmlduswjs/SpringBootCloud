@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--검색어-->
+<form th:action="@{/board}" method="get">
+    <select name="condition">
+        <option value="writer">작성자</option>
+        <option value="title">제목</option>
+        <option value="content">내용</option>
+    </select>
+
+    <input type="text" name="keyword">
+    <button> 검색</button>
+</form>
+
+
+
+<h2>리스트</h2>
+
+<table>
+    <tr>
+        <td>작성자</td>
+        <td>제목</td>
+        <td>내용</td>
+    </tr>
+
+    <tr th:each=" item : ${list}">
+        <td th:text="${item.writer}"></td>
+        <td th:text="${item.title}"></td>
+        <td th:text="${item.content}"></td>
+        <td></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

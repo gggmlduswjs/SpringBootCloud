@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a">
+
+    <!-- 전체 조회 -->
+    <select id="selectAll" resultType="Member">
+        SELECT
+        M_ID    AS id,
+        M_NAME  AS name,
+        M_EMAIL AS email
+        FROM membertbl
+    </select>
+
+    <!-- 테스트용 (하드코딩) -->
+    <select id="testSearch" resultType="Member">
+        SELECT
+        M_ID    AS id,
+        M_NAME  AS name,
+        M_EMAIL AS email
+        FROM membertbl
+        WHERE M_ID IN ('acorn', 'acorn3')
+    </select>
+
+    <!-- List로 받은 id 목록으로 조회 -->
+    <select id="selectMemberSearch" parameterType="java.util.List" resultType="Member">
+        SELECT
+        M_ID    AS id,
+        M_NAME  AS name,
+        M_EMAIL AS email
+        FROM membertbl
+        WHERE M_ID IN
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
+</mapper>

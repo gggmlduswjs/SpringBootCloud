@@ -1,0 +1,49 @@
+SELECT * FROM boardt 
+WHERE   content   like  '%다형성%'
+order by  board_no DESC;
+
+
+
+
+SELECT * FROM boardt 
+WHERE   content   like  '다형성'
+order by  board_no DESC;
+
+SELECT * FROM boardt
+WHERE  writer  like  '공%' ;
+
+
+
+SELECT * FROM boardt
+WHERE  writer  like  '공%' ;
+
+
+SELECT * FROM boardt 
+WHERE   content   like  '다형성'
+order by  board_no DESC;
+
+
+
+select * from boardt;
+
+
+
+
+SELECT * FROM boardt
+WHERE  writer  like  '공%' ;
+
+
+
+SELECT * FROM boardt
+WHERE  writer  like  '공_' ;
+
+
+
+
+SELECT * FROM boardt
+WHERE  writer  like  '공__' ;
+
+
+SELECT * FROM boardt
+WHERE   content   like  '%다형성%'
+order by  board_no DESC

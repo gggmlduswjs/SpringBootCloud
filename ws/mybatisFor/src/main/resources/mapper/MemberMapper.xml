@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a">
+
+    <!-- 전체 조회 -->
+    <select id="SelectAll" resultType="Member">
+        SELECT *
+        FROM membertbl
+    </select>
+
+    <!-- checkbox로 선택된 id 리스트 조회 -->
+    <select id="selectMembers" resultType="Member" parameterType="java.util.List">
+        SELECT *
+        FROM membertbl
+        WHERE id IN
+        <foreach item="item" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <!-- 1명 입력 -->
+    <insert id="insertMember" parameterType="Member">
+        INSERT INTO membertbl (id, name, email)
+        VALUES (#{id}, #{name}, #{email})
+    </insert>
+
+    <!-- 여러 명 입력 -->
+    <insert id="insertMembers" parameterType="java.util.List">
+        INSERT ALL
+        <foreach collection="list" item="member">
+            INTO membertbl (id, name, email)
+            VALUES (#{member.id}, #{member.name}, #{member.email})
+        </foreach>
+        SELECT * FROM dual
+    </insert>
+
+</mapper>
