@@ -1,0 +1,11 @@
+@SpringBootApplication(scanBasePackages = {
+        "com.acorn.publicData",
+        "prac"
+})
+public class PublicDataApplication {
+
+    public static void main(String[] args) {
+       SpringApplication.run(PublicDataApplication.class, args);
+    }
+
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>지도 생성하기</title>
+
+</head>
+<body>
+<!-- 지도를 표시할 div 입니다 -->
+<div id="map" style="width:100%;height:350px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0bcfed5a7253952f96e994ae541474a4"></script>
+<script th:inline="javascript">
+
+<!--    let position={-->
+<!--        lat: "33.450701",-->
+<!--        lng:"126.570667"-->
+<!--    };-->
+
+    let position=[[${position}]]    //뷰 반환할 때 모델에다가 position이라는 이름(키) 자바 객체를 저장
+                                    // th:inline => 변경하면 자바 객체 => json변환해줌
+
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new kakao.maps.LatLng(position.lat, position.lng), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+</script>
+</body>
+</html>
