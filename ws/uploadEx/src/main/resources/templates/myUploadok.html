@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Result</title>
+</head>
+<body>
+
+<!-- 파일명 출력 -->
+<p>파일명: [[${fileName}]]</p>
+
+<!-- 업로드한 이미지 출력 -->
+<img th:src="@{/myimages/{fileName}(fileName = ${fileName})}"  alt="이미지">
+<img th:src="@{/myimages/{fileName}(fileName = ${fileName})}"  alt="이미지">
+
+<!--<a href="/myattach/dfdfdfdf.png"> 다운로드</a>>-->
+<a th:href="@{/myattach/{fileName}(fileName=${fileName})}"    > 다운로드 </a>
+
+</body>
+</html>

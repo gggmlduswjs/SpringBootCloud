@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        function getData(){
+            alert("dfdfdf");
+
+            //fetch() 서버의 데이터를 받아오기(화면전환 없이)
+            /*
+            fetch("/acorns")
+            .then(  ( )=> { } ) //성공했을 때 콜백(화살표 함수 사용) function(){}
+            .then(  ( )=> { } ) //성공했을 때 콜백
+            .catch( ( ) =>{ } );//실패했을 때의 콜백
+
+            */
+
+            // 화살표 ()=>{}
+            // 생략할 수 있다
+            // 매개변수가 한 개() 괄호 생략
+            // 명령 한 줄인 경우 중괄호 블럭 생략
+
+            /*
+            fetch("/acorns")
+            .then({response}=>{return response.json();}) //then(콜백함수) // 성공했을 때 콜백 전체응답 => return 전체응답에서 바디만 json으로
+            .then( (data)=>{
+            console.log("data출력);
+
+            console.log(data);})
+            .catch( (err)=>{console.log(err);});
+            */
+
+<!--            fetch("/acorns")-->
+<!--            .then((response)=>{return response.json();})-->
+<!--            .then((data )=>{ console.log(data);})-->
+<!--            .catch((err)=>{console.log(err);});-->
+
+            fetch("/acorns")
+            .then(  response=> response.json )
+            .then(  data=> {
+                console.log(data);
+                //화면에
+                alert("보여주기");
+                let str="<ul>";
+                for(let i=0; i<data.length; i++){
+                    let item = data[i];
+                    console.log(item);
+                    str += "<li>"+item.id+item.name +"</li>";
+
+                }
+                str +- "</ul>"
+
+                //
+
+                let resultE =document.querySelector("#result");
+                resultE.innerHTML=str;
+
+            } )
+            .catch( err => console.log(err) );
+
+
+        }
+
+        ///
+
+        function registerMember(){
+            alert("등록하기");
+            let newAcor{id:"a100", name:"브래드피트"};
+            fetch("/acorns" ,{
+            method:"post",
+            headers:{  'Content-Type': 'application/json'},
+            body: JSON.stringify(newAcorn)
+            })
+            .then()
+            .then()
+            .catch();
+        }
+    </script>
+</head>
+<body>
+
+view
+
+<button onclick="getData()">전체조회</button>
+<div id="result"></div>
+
+<h2>회원등록하기, 화면전환없이</h2>
+<input type="text" id="id">
+<input type="text" id="name">
+
+<button onclick="registerMember">등록하기</button>
+
+</body>
+</html>
