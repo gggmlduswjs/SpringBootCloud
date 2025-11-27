@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<p th:each="item:${#numbers.sequence(1,10)}">
+    <span th:text="${item}"></span>
+</p>
+
+<!--start , end start~end 반복하기-->
+
+<p th:each="item : ${#numbers.sequence(start,end)}"></p>
+    <span th:text="${item}"></span>
+    [[${item}]]
+</p>
+
+<h2>페이징정보</h2>
+<span th:each="item  : ${#numbers.sequence(start, end)}"  th:text="${item}">
+</span>
+
+<h2>페이징정보=====</h2>
+<span th:each="item  : ${#numbers.sequence(start, end)}">
+    [[${item}]]
+</span>
+
+</body>
+</html>

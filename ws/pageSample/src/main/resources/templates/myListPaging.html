@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>리스트</h2>
+
+<!--이전-->
+<!--1 2 3 4 5-->
+
+<span th:if="${pageHandler.grpStartPage >1}">
+    <a th:href="@{/myList(currentPage=${pageHandler.grpStartPage-1})}">
+        이전
+    </a>
+</span>
+
+<span th:each="page:${#numbers.sequence(pageHandler.grpStartPage,pageHandler.grpEndPage)}"
+      th:text="${page}">
+</span>
+
+<p>====</p>
+
+<span th:each="page:${#numbers.sequence(pageHandler.grpStartPage,pageHandler.grpEndPage)}">
+      <a th:href="@{/myList(currentPage=${page})}" th:text="${page}">
+
+      </a>
+</span>
+<!--다음-->
+
+<span th:if="${pageHandler.grpEndPage <pageHandler.totalPage}">
+    <a th:href="@{/myList(currentPage=${pageHandler.grpStartPage+1})}">
+        다음
+    </a>
+</span>
+
+</body>
+</html>

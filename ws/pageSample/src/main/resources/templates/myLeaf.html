@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:each="item : ${list}">
+    <span th:text="${item.m_id}"></span>
+    <span th:text="${item.m_pw}"></span>
+    <span th:text="${item.m_name}"></span>
+</p>
+</body>
+</html>
