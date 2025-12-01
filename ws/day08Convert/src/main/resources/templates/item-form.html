@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <h2>item 화면</h2>
+
+ <!-- form객체와 모델객체를 바인딩 -->
+ <!--  th:object=${item}   item 은 저장된 모델의 key이름-->
+ <!--  th:field="*{money}"  모델(객체)의 속성명-->
+
+
+
+<form th:action="@{/item}"  method="post" th:object="${item}">
+    <input type="text"  name="money"  th:field="*{money}"> <br>
+    <div th:errors="*{money}"> 가격오류</div>
+    <input type="text"  name="name" th:field="*{name}"> <br>
+    <div th:errors="*{name}"></div>
+    <input type="text"  name="inDate" th:field="*{inDate}"><br>
+    <div th:errors="*{inDate}"></div>
+    <button>등록</button>
+</form>
+</body>
+</html>

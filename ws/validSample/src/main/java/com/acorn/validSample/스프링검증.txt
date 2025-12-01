@@ -1,0 +1,33 @@
+FieldError 두 가지 방식 선택 기준
+
+ 1) 오류코드 사용 + 메시지파일(messages.properties) 사용 → 긴 버전 사용
+new FieldError(
+    "order",
+    "name",
+    order.getName(),
+    false,
+    new String[]{"required"},   // 오류코드
+    null,                       // 코드 메시지의 파라미터
+    "기본 메시지"
+)
+
+ 언제 이걸 선택?
+required, min, range, typeMismatch 같은 오류코드 기반 처리하고 싶을 때
+messages.properties에서 메시지 관리하고 싶을 때
+다국어(한국어/영어) 지원하고 싶을 때
+Thymeleaf에서 <form:errors> 자동 처리하고 싶을 때
+즉, 진짜 스프링 방식의 검증을 하고 싶으면 이걸 선택.
+
+
+2) 단순 메시지용 → 짧은 버전 사용
+new FieldError(
+    "order",     // 모델 객체 이름
+    "qty",       // 필드명
+    "수량을 1개 이상으로 입력하세요"  // 바로 화면에 출력할 메시지
+)
+
+ 언제 이걸 선택?
+메시지 파일(messages.properties) 필요 없음
+오류코드 기반 처리 필요 없음
+그냥 즉석에서 문자열 메시지 하나만 보여주고 끝낼 때
+간단한 검증에서 빠르게 오류를 띄우고 싶을 때

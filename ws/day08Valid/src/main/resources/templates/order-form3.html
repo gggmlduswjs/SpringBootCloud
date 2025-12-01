@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>주문화면</h2>
+<!--주문객체 모델, 검증에 실패하면 다시 주문화면으로 돌아오기 -->
+<!--th:field 사용하면 name, id, value 자동으로 생성, errors로 에러정보도 사용 가능함
+    바인딩리절트로 (bindingResult) 담긴 errors도 에러 정보도 사용 가능함-->
+<form th:action="@{/order3}" th:object="${order}" method="post">
+    <input type="text" th:field="*{name}"> <br>
+    <div th:errors="*{name}"></div>
+    <input type="text" th:field="*{price}"> <br>
+
+    <div th:errors="*{price}"></div>
+    <input type="text" th:field="*{qty}"> <br>
+    <div th:errors="*{qty}"></div>
+    <button>주문하기</button>
+</form>
+</body>
+</html>

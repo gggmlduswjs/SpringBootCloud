@@ -1,0 +1,62 @@
+✅ 1. 서비스 메서드 실행 시간 측정(Performance Logging)
+
+가장 실무에서 많이 씀.
+병목 파악, 성능 측정에 필수.
+
+어떤 서비스 메서드가 느린지 자동 추적
+DB 호출 시간이 오래 걸리는 메서드 분석
+
+ AOP로 가능
+@Around("@annotation(TimeCheck)")
+public Object checkTime(ProceedingJoinPoint pjp) throws Throwable {
+    long start = System.currentTimeMillis();
+    Object result = pjp.proceed();
+    long end = System.currentTimeMillis();
+    System.out.println("실행 시간: " + (end - start) + "ms");
+    return result;
+}
+
+인터셉터는 controller단위로 사용하기 때문에  서비스로  repository의 매서드 단위로 성능을 측정코드를 넣고 싶다면 aop 사용
+
+✅ 2. 특정 메서드 호출 로깅 (@LogExecution 같은 커스텀 어노테이션)
+
+URL별 로깅은 인터셉터로 가능하지만,
+특정 서비스 메서드 단위 로깅은 인터셉터가 못 함 → AOP만 가능
+
+👉 예:
+결제 로직이 호출되면 무조건 로그 남기기
+관리자 기능 호출 시 기록
+민감한 메서드 접근 추적
+
+→ 특정 메서드에만 로깅 / 모니터링이 필요할 때 AOP가 딱 좋음.
+
+✅ 3. Retry(재시도) 기능 자동화
+
+외부 API 호출할 때 실무에서 엄청 흔함.
+
+예:
+
+간헐적 네트워크 장애
+
+외부 서비스 응답 지연
+
+개별 메서드에 try-catch 반복해서 적는 건 비효율 → AOP로 해결.
+
+👉 예:
+@Retry(3)
+public String callApi() { ... }
+AOP로 이 어노테이션 감지해서 자동 재시도 가능.
+
+
+✅ 4. 트랜잭션 외 비즈니스 검증 공통 처리
+
+Service 단에서 반복되는 검증을 한곳에서 처리하기 좋음.
+
+예:
+
+관리자 기능 실행 시 내부 규칙 검증
+특정 파라미터가 비어 있으면 공통 예외
+가격 정책 검증
+특정 타입의 예외만 일괄 변환
+Controller 인터셉터로는 못 잡는 Service 내부 흐름이기 때문에 AOP가 정답.
+
